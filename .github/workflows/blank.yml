@@ -38,11 +38,12 @@ jobs:
           tar -czf gzipped_bin.tar.gz /home/linuxbrew/.linuxbrew/bin
           tar -czf gzipped_sbin.tar.gz /home/linuxbrew/.linuxbrew/sbin
           tar -czf gzipped_lib.tar.gz /home/linuxbrew/.linuxbrew/lib
+          tar -czf gzipped_Cellar.tar.gz /home/linuxbrew/.linuxbrew/Cellar
 
       - name: 'Upload'
         uses: actions/upload-artifact@v3
         with:
-          name: bin_sbin_lib
+          name: bin_sbin_lib_Cellar
           path: gzipped_*.tar.gz
           retention-days: 1
 
