@@ -39,22 +39,10 @@ jobs:
           tar -czf gzipped_sbin.tar.gz /home/linuxbrew/.linuxbrew/sbin
           tar -czf gzipped_lib.tar.gz /home/linuxbrew/.linuxbrew/lib
 
-      - name: 'Upload bin'
+      - name: 'Upload'
         uses: actions/upload-artifact@v3
         with:
-          name: bin
-          path: gzipped.tar.gz
-          retention-days: 1
-      - name: 'Upload sbin'
-        uses: actions/upload-artifact@v3
-        with:
-          name: sbin
-          path: gzipped_sbin.tar.gz
-          retention-days: 1
-      - name: 'Upload lib'
-        uses: actions/upload-artifact@v3
-        with:
-          name: lib
-          path: gzipped_lib.tar.gz
+          name: bin_sbin_lib
+          path: gzipped_*.tar.gz
           retention-days: 1
 
