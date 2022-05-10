@@ -36,7 +36,7 @@ run() {
     
     
     # Always write the .profile file, so that we can be sure that all bins are immediately ready for use
-    write_profile
+    #write_profile
     
 }
 
