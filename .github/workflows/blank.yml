@@ -35,11 +35,26 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           bash install_brew_packages.sh graphviz
-          tar -c -f -z -v gzipped.tar.gz /home/linuxbrew
+          tar -czf gzipped_bin.tar.gz /home/linuxbrew/.linuxbrew/bin
+          tar -czf gzipped_sbin.tar.gz /home/linuxbrew/.linuxbrew/sbin
+          tar -czf gzipped_lib.tar.gz /home/linuxbrew/.linuxbrew/lib
 
-      - name: 'Upload Artifact'
+      - name: 'Upload bin'
         uses: actions/upload-artifact@v3
         with:
-          name: linuxbrewartifact
+          name: bin
           path: gzipped.tar.gz
-          retention-days: 5
+          retention-days: 1
+      - name: 'Upload sbin'
+        uses: actions/upload-artifact@v3
+        with:
+          name: sbin
+          path: gzipped_sbin.tar.gz
+          retention-days: 1
+      - name: 'Upload lib'
+        uses: actions/upload-artifact@v3
+        with:
+          name: lib
+          path: gzipped_lib.tar.gz
+          retention-days: 1
+
