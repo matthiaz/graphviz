@@ -42,12 +42,12 @@ run() {
 
 copy_lib_to_cache() {
     echo "Copy to cache..."
-    cp -Rf $PLATFORM_APP_DIR/.linuxbrew $PLATFORM_CACHE_DIR
+    #cp -Rf $PLATFORM_APP_DIR/.linuxbrew $PLATFORM_CACHE_DIR
 }
 
 copy_lib_from_cache() {
     echo "Copy from cache..."
-    cp -Rf $PLATFORM_CACHE_DIR/.linuxbrew $PLATFORM_APP_DIR
+    #cp -Rf $PLATFORM_CACHE_DIR/.linuxbrew $PLATFORM_APP_DIR
 }
 
 install_brew() {
