@@ -8,36 +8,11 @@ run() {
     echo "Cache folder $cache_folder"
     echo "Cache file $cache_file"
     echo "Current folder $(pwd)"
-    # check if we have brew installed
-    if [ ! -f "$cache_folder/bin/brew" ]; 
-    then
-        install_brew
-    else
-        copy_lib_from_cache
-    fi
-    
-
+    install_brew
     load_brew
-    
-    # Check to see if the cache file exists
-    if [ ! -f ${cache_file} ]; 
-    then 
-        echo "" > $cache_file
-    fi
-    
-    # check if cache_contents actually matches what we want
-    cache_contents=$(<"$cache_file")
-    if [[ "$cache_contents" != "$@" ]]; then
-        # Not the same components, so reinstall
-        install_components $@
-        copy_lib_to_cache $@
-        echo "$@" > $cache_file
-    fi
-    
-    
-    # Always write the .profile file, so that we can be sure that all bins are immediately ready for use
-    #write_profile
-    
+
+    install_components $@
+
 }
 
 copy_lib_to_cache() {
@@ -60,8 +35,6 @@ install_brew() {
     echo "Unpacking into .linuxbrew folder"
     tar xzf brew.tar.gz --strip-components 1 -C $PLATFORM_APP_DIR/.linuxbrew/
     rm brew.tar.gz
-    
-    copy_lib_to_cache
 }
 
 load_brew() {
@@ -74,7 +47,7 @@ install_components() {
   echo "Installing components: '$components_to_install'"
   for f in $components_to_install
   do
-		  echo "Installing component: '$f'"
+      echo "Installing component: '$f'"
       install_component $f
   done
 }
