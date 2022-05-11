@@ -53,7 +53,8 @@ install_components() {
 }
 
 install_component() {
-    brew install $1
+    brew install --build-bottle $1
+    brew bottle $1
 }
 
 write_profile() {
