@@ -35,11 +35,10 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           bash install_brew_packages.sh graphviz
-          tar -czf gzipped_bin.tar.gz /home/linuxbrew/.linuxbrew/bin
-          tar -czf gzipped_sbin.tar.gz /home/linuxbrew/.linuxbrew/sbin
-          tar -czf gzipped_lib.tar.gz /home/linuxbrew/.linuxbrew/lib
-          tar -czf gzipped_Cellar.tar.gz /home/linuxbrew/.linuxbrew/Cellar
-
+          ls -lsa /home/linuxbrew/.linuxbrew
+          pwd
+          ls -lsa
+          
       - name: 'Upload'
         uses: actions/upload-artifact@v3
         with:
