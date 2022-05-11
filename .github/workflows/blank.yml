@@ -42,7 +42,7 @@ jobs:
       - name: 'Upload'
         uses: actions/upload-artifact@v3
         with:
-          name: bin_sbin_lib_Cellar
-          path: gzipped_*.tar.gz
+          name: graphviz
+          path: graphviz*.tar.gz
           retention-days: 1
 
