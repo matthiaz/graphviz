@@ -35,14 +35,13 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           bash install_brew_packages.sh graphviz
-          ls -lsa /home/linuxbrew/.linuxbrew
-          pwd
-          ls -lsa
+          brew bundle dump --file=brewfile.dump
+          du -h brewfile.dump
           
       - name: 'Upload'
         uses: actions/upload-artifact@v3
         with:
-          name: graphviz
-          path: graphviz*.tar.gz
+          name: brewfile
+          path: brewfile.dump
           retention-days: 1
 
