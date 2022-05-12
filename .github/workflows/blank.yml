@@ -37,11 +37,11 @@ jobs:
           bash install_brew_packages.sh graphviz
           brew bundle dump --file=brewfile.dump
           du -h brewfile.dump
-          
+          tar --exclude-vcs -zcvf linuxbrew.tar.gz /home/linuxbrew/.linuxbrew
       - name: 'Upload'
         uses: actions/upload-artifact@v3
         with:
           name: brewfile
-          path: brewfile.dump
+          path: linuxbrew.tar.gz
           retention-days: 1
 
